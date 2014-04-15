@@ -13,11 +13,11 @@
                         <viewControllerLayoutGuide type="bottom" id="2fi-mo-0CV"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS">
-                        <rect key="frame" x="0.0" y="0.0" width="568" height="320"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hc6-Y0-AAB">
-                                <rect key="frame" x="184" y="80" width="200" height="30"/>
+                                <rect key="frame" x="60" y="60" width="200" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="0bU-gC-fO0"/>
@@ -26,27 +26,60 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u9N-Hh-WEE">
-                                <rect key="frame" x="263" y="136" width="42" height="21"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="300" translatesAutoresizingMaskIntoConstraints="NO" id="u9N-Hh-WEE">
+                                <rect key="frame" x="10" y="109" width="300" height="100"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="9re-SX-r3S"/>
+                                    <constraint firstAttribute="width" constant="300" id="fNr-d4-ZiC"/>
+                                </constraints>
+                                <string key="text">Label
+Label
+Label
+Label</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rrj-iS-rof">
+                                <rect key="frame" x="90" y="219" width="141" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Start Sending Signal">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="startSignal:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="Y0V-kN-sru"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="I9l-Fa-XO0">
+                                <rect key="frame" x="113" y="257" width="95" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Cancel Signal">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="cancelSignal:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="gru-24-Bkq"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="centerX" secondItem="hc6-Y0-AAB" secondAttribute="centerX" id="fb3-Um-6BX"/>
-                            <constraint firstItem="hc6-Y0-AAB" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="60" id="gAq-Kp-eWN"/>
-                            <constraint firstItem="u9N-Hh-WEE" firstAttribute="top" secondItem="hc6-Y0-AAB" secondAttribute="bottom" constant="26" id="lZH-v8-nDf"/>
-                            <constraint firstItem="u9N-Hh-WEE" firstAttribute="centerX" secondItem="hc6-Y0-AAB" secondAttribute="centerX" id="rMj-af-iM8"/>
+                            <constraint firstItem="I9l-Fa-XO0" firstAttribute="centerX" secondItem="rrj-iS-rof" secondAttribute="centerX" id="4zw-3P-gP3"/>
+                            <constraint firstItem="rrj-iS-rof" firstAttribute="top" secondItem="u9N-Hh-WEE" secondAttribute="bottom" constant="10" id="9fn-Tm-4MM"/>
+                            <constraint firstItem="I9l-Fa-XO0" firstAttribute="top" secondItem="rrj-iS-rof" secondAttribute="bottom" constant="8" symbolic="YES" id="CAq-ly-nAS"/>
+                            <constraint firstItem="u9N-Hh-WEE" firstAttribute="centerX" secondItem="hc6-Y0-AAB" secondAttribute="centerX" id="Jde-yh-Igj"/>
+                            <constraint firstItem="rrj-iS-rof" firstAttribute="centerX" secondItem="u9N-Hh-WEE" secondAttribute="centerX" id="YFL-Kt-ZTe"/>
+                            <constraint firstAttribute="centerX" secondItem="hc6-Y0-AAB" secondAttribute="centerX" id="d63-X1-gX8"/>
+                            <constraint firstItem="hc6-Y0-AAB" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="40" id="gAq-Kp-eWN"/>
+                            <constraint firstItem="u9N-Hh-WEE" firstAttribute="top" secondItem="hc6-Y0-AAB" secondAttribute="bottom" constant="19" id="ypF-Z3-O8Q"/>
                         </constraints>
-                        <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     </view>
-                    <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
+                    <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
                     <connections>
+                        <outlet property="cancelButton" destination="I9l-Fa-XO0" id="jlg-hZ-7L2"/>
                         <outlet property="inputField" destination="hc6-Y0-AAB" id="k22-b8-gik"/>
                         <outlet property="morseLabel" destination="u9N-Hh-WEE" id="dY2-DK-hV1"/>
+                        <outlet property="startButton" destination="rrj-iS-rof" id="gAd-0M-hMv"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>

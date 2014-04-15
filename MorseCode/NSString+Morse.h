@@ -10,10 +10,13 @@
 
 @interface NSString (Morse)
 
++(NSString *)symbolForLetter:(NSString *)letter;
+
+
 -(NSString *)validateString;
--(NSString *)convertStringToCode;
--(NSString *)symbolForLetter:(NSString *)letter;
--(NSString *)formatCode:(NSArray*)codeArray;
+-(NSArray *)convertStringToCodeArray;
+-(NSString *)formatCodeArray:(NSArray*)codeArray;
+-(int)delay;
 
 @end
 
