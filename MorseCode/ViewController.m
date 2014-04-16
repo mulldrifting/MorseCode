@@ -15,10 +15,10 @@
 @property (weak, nonatomic) IBOutlet UILabel *morseLabel;
 @property (weak, nonatomic) IBOutlet UITextField *inputField;
 @property (weak, nonatomic) IBOutlet UIButton *startButton;
-@property (weak, nonatomic) IBOutlet UIButton *cancelButton;
 
 @property (strong, nonatomic) NSString *inputString;
 @property (strong, nonatomic) NSArray *codeArray;
+@property (strong, nonatomic) NSArray *pipArray;
 @property (nonatomic) BOOL signalIsCancelled;
 
 @property (strong, nonatomic) NSOperationQueue *flashQueue;
@@ -44,6 +44,8 @@
     
     self.flashQueue = [NSOperationQueue new];
     [self.flashQueue setMaxConcurrentOperationCount:1];
+    
+    
     
 }
 
@@ -103,8 +105,8 @@
 - (void)turnOn
 {
     AVCaptureDevice *myDevice = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeVideo];
-    if ([myDevice hasTorch] && [myDevice hasFlash]) {
-        [myDevice lockForConfiguration:nil]; //add error msg
+    if ([myDevice hasTorch] || [myDevice hasFlash]) {
+        [myDevice lockForConfiguration:nil];
         [myDevice setTorchMode:AVCaptureTorchModeOn];
         [myDevice setFlashMode:AVCaptureFlashModeOn];
         [myDevice unlockForConfiguration];
@@ -114,7 +116,7 @@
 - (void)turnOff
 {
     AVCaptureDevice *myDevice = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeVideo];
-    if ([myDevice hasTorch] && [myDevice hasFlash]) {
+    if ([myDevice hasTorch] || [myDevice hasFlash]) {
         [myDevice lockForConfiguration:nil]; //add error msg
         [myDevice setTorchMode:AVCaptureTorchModeOff];
         [myDevice setFlashMode:AVCaptureFlashModeOff];
@@ -124,9 +126,13 @@
 
 - (IBAction)startSignal:(id)sender
 {
+    
     if ([self.flashQueue operationCount] == 0) {
         self.signalIsCancelled = NO;
+        [self.startButton setTitle:@"Cancel Signal" forState:UIControlStateNormal];
+        [self.startButton setEnabled:NO];
         
+
         for (NSString *code in self.codeArray) {
             
             if (!self.signalIsCancelled) {
@@ -148,6 +154,10 @@
         } // for each letter
 
     }
+    else
+    {
+        [self cancelSignal];
+    }
 }
 
 
@@ -167,11 +177,13 @@
 //    [self turnOn];
 //}
 
-- (IBAction)cancelSignal:(id)sender
+- (void)cancelSignal
 {
     self.signalIsCancelled = YES;
     [self.flashQueue performSelector:@selector(cancelAllOperations) withObject:nil afterDelay:0.0];
     [self performSelector:@selector(turnOff) withObject:nil afterDelay:0.0];
+    [self.startButton setTitle:@"Start Sending Signal" forState:UIControlStateNormal];
+    [self.startButton setEnabled:YES];
 }
 
 //-(void)logoutLetter:(NSString*)letter

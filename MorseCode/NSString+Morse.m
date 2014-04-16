@@ -35,19 +35,19 @@ typedef NS_ENUM(NSInteger, codeType) {
 
 -(NSArray*)convertStringToCodeArray
 {
-    NSString *string = [self validateString];
+    NSString *string = [self uppercaseString];
     NSMutableArray *codeArray = [NSMutableArray new];
     
     NSString *letter;
     NSString *code;
-    NSString *symbol;
+    NSString *pip;
     
     for(int i = 0; i < [string length]; i++) {
         letter = [string substringWithRange:NSMakeRange(i, 1)];
-        code = [NSString symbolForLetter:letter];
+        code = [NSString codeForLetter:letter];
         for (int j = 0; j < [code length]; j++) {
-            symbol = [code substringWithRange:NSMakeRange(j, 1)];
-            [codeArray addObject:symbol];
+            pip = [code substringWithRange:NSMakeRange(j, 1)];
+            [codeArray addObject:pip];
         }
         [codeArray addObject:@" "];
     }
@@ -55,11 +55,16 @@ typedef NS_ENUM(NSInteger, codeType) {
     return codeArray;
 }
 
-
-
-+(NSString*)symbolForLetter:(NSString *)letter
+-(NSArray*)convertStringToPipArray
 {
-    return [[Constants morseDictionary] objectForKey:letter];
+    NSMutableArray *codeArray = [self convertStringToCodeArray];
+}
+
+
+
++(NSString*)codeForLetter:(NSString *)letter
+{
+    return [[Constants letterToMorseDictionary] objectForKey:letter];
 }
 
 -(NSString*)formatCodeArray:(NSArray *)codeArray
@@ -84,7 +89,7 @@ typedef NS_ENUM(NSInteger, codeType) {
 -(int)delay
 {
     if ([[Constants delayDictionary] objectForKey:self]) {
-        return [[[Constants delayDictionary] objectForKey:self] integerValue];
+        return [[[Constants delayDictionary] objectForKey:self] intValue];
     }
     return 0;
 }

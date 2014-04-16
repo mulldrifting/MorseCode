@@ -60,6 +60,7 @@
 		FE075A8118FC7BB3009C4C91 /* NSString+Morse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Morse.m"; sourceTree = "<group>"; };
 		FE075A8318FC823C009C4C91 /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
 		FE075A8418FC823C009C4C91 /* Constants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Constants.m; sourceTree = "<group>"; };
+		FE26E3E818FF042D001B92B7 /* TorchControllerDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TorchControllerDelegate.h; sourceTree = "<group>"; };
 		FE99B6DA18FDB6EB00CA3021 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
@@ -132,6 +133,7 @@
 				FE075A5A18FC734F009C4C91 /* AppDelegate.h */,
 				FE075A5B18FC734F009C4C91 /* AppDelegate.m */,
 				FE075A6318FC734F009C4C91 /* Images.xcassets */,
+				FE26E3E818FF042D001B92B7 /* TorchControllerDelegate.h */,
 				FE075A5218FC734F009C4C91 /* Supporting Files */,
 			);
 			path = MorseCode;

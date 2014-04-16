@@ -10,7 +10,7 @@
 
 @interface Constants : NSObject
 
-+ (NSDictionary*)morseDictionary;
++ (NSDictionary*)letterToMorseDictionary;
 + (NSDictionary*)delayDictionary;
 
 @end
