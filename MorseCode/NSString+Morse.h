@@ -10,12 +10,16 @@
 
 @interface NSString (Morse)
 
-+(NSString *)codeForLetter:(NSString *)letter;
-
--(NSString *)validateString;
 -(NSArray *)convertStringToCodeArray;
 -(NSArray *)convertStringToPipArray;
+
+-(NSString *)letterAtIndex:(int)index;
+-(NSString *)codeForLetterAtIndex:(int)index;
+-(NSArray *)arrayForLetterAtIndex:(int)index;
+
 -(NSString *)formatCodeArray:(NSArray*)codeArray;
+
+-(BOOL)isSpace;
 -(int)delay;
 
 @end

@@ -16,7 +16,7 @@
 
 @end
 
-@interface TorchControllerDelegate : <#superclass#>
+@interface TorchControllerDelegate : NSObject
 
 @property (nonatomic, weak) id<TorchControllerDelegate> delegate;
 

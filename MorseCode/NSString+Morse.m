@@ -9,47 +9,14 @@
 #import "NSString+Morse.h"
 #import "Constants.h"
 
-typedef NS_ENUM(NSInteger, codeType) {
-    kDash,
-    kDot,
-    kSpace
-};
-
 @implementation NSString (Morse)
-
--(NSString*)validateString
-{
-    NSString *string = [self uppercaseString];
-
-//    NSError *error;
-//    NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:@"[^A-Z0-9]" options:NSRegularExpressionCaseInsensitive error:&error];
-//    string = [regex stringByReplacingMatchesInString:string options:0 range:NSMakeRange(0, [string length]) withTemplate:@""];
-//    if (!error)
-//    {
-//        NSLog(@"%@",string);
-//        return string;
-//    }
-//    return @"";
-    return string;
-}
 
 -(NSArray*)convertStringToCodeArray
 {
-    NSString *string = [self uppercaseString];
     NSMutableArray *codeArray = [NSMutableArray new];
     
-    NSString *letter;
-    NSString *code;
-    NSString *pip;
-    
-    for(int i = 0; i < [string length]; i++) {
-        letter = [string substringWithRange:NSMakeRange(i, 1)];
-        code = [NSString codeForLetter:letter];
-        for (int j = 0; j < [code length]; j++) {
-            pip = [code substringWithRange:NSMakeRange(j, 1)];
-            [codeArray addObject:pip];
-        }
-        [codeArray addObject:@" "];
+    for(int i = 0; i < [self length]; i++) {
+        [codeArray addObject:[self codeForLetterAtIndex:i]];
     }
     
     return codeArray;
@@ -57,14 +24,40 @@ typedef NS_ENUM(NSInteger, codeType) {
 
 -(NSArray*)convertStringToPipArray
 {
-    NSMutableArray *codeArray = [self convertStringToCodeArray];
+    NSMutableArray *pipArray = [NSMutableArray new];
+    
+    NSString *letter;
+    NSString *prevLetter = @" ";
+    
+    for (int i = 0; i < [self length]; i++) {
+        
+        letter = [self substringWithRange:NSMakeRange(i, 1)];
+        
+        if (![prevLetter isEqualToString:@" "] && ![letter isEqualToString:@" "]) {
+            [pipArray addObject:@" "];
+        }
+
+        [pipArray addObjectsFromArray:[self arrayForLetterAtIndex:i]];
+        
+        prevLetter = letter;
+    }
+    
+    return pipArray;
 }
 
-
-
-+(NSString*)codeForLetter:(NSString *)letter
+-(NSString*)letterAtIndex:(int)index
 {
-    return [[Constants letterToMorseDictionary] objectForKey:letter];
+    return [self substringWithRange:NSMakeRange(index, 1)];
+}
+
+-(NSString*)codeForLetterAtIndex:(int)index
+{
+    return [[Constants letterToMorseDictionary] objectForKey:[self letterAtIndex:index]];
+}
+
+-(NSArray *)arrayForLetterAtIndex:(int)index
+{
+    return [[Constants letterToArrayDictionary] objectForKey:[self letterAtIndex:index]];
 }
 
 -(NSString*)formatCodeArray:(NSArray *)codeArray
@@ -72,19 +65,26 @@ typedef NS_ENUM(NSInteger, codeType) {
     NSString *codeString = @"";
     
     for (NSString *code in codeArray) {
-        if (![code isEqualToString:@"*"])
+        codeString = [codeString stringByAppendingString:code];
+        if ([code isEqualToString:@" "])
         {
-            codeString = [codeString stringByAppendingString:code];
+            codeString = [codeString stringByAppendingString:@"  "];
         }
         else {
-            codeString = [codeString stringByAppendingString:@"   "];
+            codeString = [codeString stringByAppendingString:@" "];
         }
     }
 
     return codeString;
 }
 
-
+-(BOOL)isSpace
+{
+    if ([self isEqualToString:@"|"] || [self isEqualToString:@" "] || [self isEqualToString:@"*"]) {
+        return YES;
+    }
+    return NO;
+}
 
 -(int)delay
 {
