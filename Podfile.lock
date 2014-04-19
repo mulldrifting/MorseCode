@@ -1,10 +1,13 @@
 PODS:
+  - GPUImage (0.1.4)
   - ProgressHUD (1.3)
 
 DEPENDENCIES:
+  - GPUImage (~> 0.1)
   - ProgressHUD (~> 1.3)
 
 SPEC CHECKSUMS:
+  GPUImage: f9b32e12350792a630e596ffc7b050bea3662670
   ProgressHUD: 163a4ae76f6543c18ac06149d960528620b4e1f5
 
 COCOAPODS: 0.32.1

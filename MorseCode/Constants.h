@@ -11,6 +11,7 @@
 @interface Constants : NSObject
 
 + (NSDictionary*)letterToMorseDictionary;
++ (NSDictionary*)morseToLetterDictionary;
 + (NSDictionary*)letterToArrayDictionary;
 + (NSDictionary*)delayDictionary;
 

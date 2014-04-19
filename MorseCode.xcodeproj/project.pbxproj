@@ -24,6 +24,8 @@
 		FE075A7718FC734F009C4C91 /* MorseCodeTests.m in Sources */ = {isa = PBXBuildFile; fileRef = FE075A7618FC734F009C4C91 /* MorseCodeTests.m */; };
 		FE075A8218FC7BB3009C4C91 /* NSString+Morse.m in Sources */ = {isa = PBXBuildFile; fileRef = FE075A8118FC7BB3009C4C91 /* NSString+Morse.m */; };
 		FE075A8518FC823C009C4C91 /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = FE075A8418FC823C009C4C91 /* Constants.m */; };
+		FE6CA4CA190070F700EBE131 /* ReceivingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FE6CA4C9190070F700EBE131 /* ReceivingViewController.m */; };
+		FE6CA4D01900737F00EBE131 /* InputController.m in Sources */ = {isa = PBXBuildFile; fileRef = FE6CA4CF1900737F00EBE131 /* InputController.m */; };
 		FE99B6DB18FDB6EB00CA3021 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FE99B6DA18FDB6EB00CA3021 /* AVFoundation.framework */; };
 		FED3FC2718FF115A00006F6E /* TorchController.m in Sources */ = {isa = PBXBuildFile; fileRef = FED3FC2618FF115A00006F6E /* TorchController.m */; };
 /* End PBXBuildFile section */
@@ -64,6 +66,11 @@
 		FE075A8118FC7BB3009C4C91 /* NSString+Morse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Morse.m"; sourceTree = "<group>"; };
 		FE075A8318FC823C009C4C91 /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
 		FE075A8418FC823C009C4C91 /* Constants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Constants.m; sourceTree = "<group>"; };
+		FE6CA4C8190070F700EBE131 /* ReceivingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReceivingViewController.h; sourceTree = "<group>"; };
+		FE6CA4C9190070F700EBE131 /* ReceivingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReceivingViewController.m; sourceTree = "<group>"; };
+		FE6CA4CE1900737F00EBE131 /* InputController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InputController.h; sourceTree = "<group>"; };
+		FE6CA4CF1900737F00EBE131 /* InputController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InputController.m; sourceTree = "<group>"; };
+		FE6CA4D11901CF9000EBE131 /* libGPUImage.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libGPUImage.a; path = "/Users/Drifter/Documents/XCode/Cocoapods/GPUImage-master/framework/../build/Debug-iphoneos/libGPUImage.a"; sourceTree = "<absolute>"; };
 		FE99B6DA18FDB6EB00CA3021 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		FED3FC2518FF115A00006F6E /* TorchController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TorchController.h; sourceTree = "<group>"; };
 		FED3FC2618FF115A00006F6E /* TorchController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TorchController.m; sourceTree = "<group>"; };
@@ -118,6 +125,7 @@
 		FE075A4A18FC734F009C4C91 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				FE6CA4D11901CF9000EBE131 /* libGPUImage.a */,
 				FE99B6DA18FDB6EB00CA3021 /* AVFoundation.framework */,
 				FE075A4B18FC734F009C4C91 /* Foundation.framework */,
 				FE075A4D18FC734F009C4C91 /* CoreGraphics.framework */,
@@ -138,8 +146,12 @@
 				FE075A5D18FC734F009C4C91 /* Main.storyboard */,
 				FE075A6018FC734F009C4C91 /* ViewController.h */,
 				FE075A6118FC734F009C4C91 /* ViewController.m */,
+				FE6CA4C8190070F700EBE131 /* ReceivingViewController.h */,
+				FE6CA4C9190070F700EBE131 /* ReceivingViewController.m */,
 				FED3FC2518FF115A00006F6E /* TorchController.h */,
 				FED3FC2618FF115A00006F6E /* TorchController.m */,
+				FE6CA4CE1900737F00EBE131 /* InputController.h */,
+				FE6CA4CF1900737F00EBE131 /* InputController.m */,
 				FE075A5A18FC734F009C4C91 /* AppDelegate.h */,
 				FE075A5B18FC734F009C4C91 /* AppDelegate.m */,
 				FE075A6318FC734F009C4C91 /* Images.xcassets */,
@@ -309,10 +321,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FE6CA4D01900737F00EBE131 /* InputController.m in Sources */,
 				FED3FC2718FF115A00006F6E /* TorchController.m in Sources */,
 				FE075A8518FC823C009C4C91 /* Constants.m in Sources */,
 				FE075A8218FC7BB3009C4C91 /* NSString+Morse.m in Sources */,
 				FE075A6218FC734F009C4C91 /* ViewController.m in Sources */,
+				FE6CA4CA190070F700EBE131 /* ReceivingViewController.m in Sources */,
 				FE075A5C18FC734F009C4C91 /* AppDelegate.m in Sources */,
 				FE075A5818FC734F009C4C91 /* main.m in Sources */,
 			);
@@ -443,6 +457,10 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "MorseCode/MorseCode-Prefix.pch";
 				INFOPLIST_FILE = "MorseCode/MorseCode-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"/Users/Drifter/Documents/XCode/Cocoapods/GPUImage-master/framework/../build/Debug-iphoneos",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -457,6 +475,10 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "MorseCode/MorseCode-Prefix.pch";
 				INFOPLIST_FILE = "MorseCode/MorseCode-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"/Users/Drifter/Documents/XCode/Cocoapods/GPUImage-master/framework/../build/Debug-iphoneos",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};

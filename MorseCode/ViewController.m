@@ -9,6 +9,7 @@
 #import <AVFoundation/AVFoundation.h>
 #import <ProgressHUD/ProgressHUD.h>
 #import "ViewController.h"
+#import "ReceivingViewController.h"
 #import "TorchController.h"
 #import "NSString+Morse.h"
 #import "Constants.h"
@@ -19,11 +20,15 @@
 @property (weak, nonatomic) IBOutlet UILabel *morseLabel;
 @property (weak, nonatomic) IBOutlet UITextField *inputField;
 @property (weak, nonatomic) IBOutlet UIButton *startButton;
+//@property (weak, nonatomic) IBOutlet UIPageControl *pageControl;
+//@property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 
 @property (strong, nonatomic) NSString *inputString;
 @property (nonatomic) BOOL signalIsOver;
 
 @property (strong, nonatomic) TorchController *torchController;
+@property (strong, nonatomic) ReceivingViewController *receivingController;
+@property (strong, nonatomic) UIPageViewController *pageViewController;
 
 @end
 
@@ -32,6 +37,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    // Set up receiving view controller
+    self.receivingController = [ReceivingViewController new];
 
     // Set up Torch Controller
     self.torchController = [TorchController new];
@@ -39,6 +47,7 @@
     
     // Set up input text field
     self.inputField.delegate = self;
+    self.inputField.clearButtonMode = UITextFieldViewModeWhileEditing;
     
     [self.inputField addTarget:self.inputField
                         action:@selector(resignFirstResponder)
@@ -51,6 +60,13 @@
     // Set up start button
     [self.startButton setTitle:@"Start Sending Signal" forState:UIControlStateNormal];
     [self.startButton setEnabled:NO];
+    
+    // Set up page control
+//    self.scrollView.delegate = self;
+//    [self.pageControl addTarget:self
+//                           action:@selector(changePage)
+//                 forControlEvents:UIControlEventValueChanged];
+//    self.pageControl.currentPage =
     
     // Dismiss keyboard when tapping outside
     UITapGestureRecognizer *tapOutside = [[UITapGestureRecognizer alloc]
@@ -139,5 +155,37 @@
     [self.torchController cancelSignal];
 }
 
+#pragma mark - Page View Controller Data Source
+//
+//- (UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerBeforeViewController:(UIViewController *)viewController
+//{
+//    NSUInteger index = ((ReceivingViewController*) viewController).pageIndex;
+//    
+//    if ((index == 0) || (index == NSNotFound)) {
+//        return nil;
+//    }
+//    
+//    index--;
+//    return [self viewControllerAtIndex:index];
+//}
+//
+//- (UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerAfterViewController:(UIViewController *)viewController
+//{
+//    NSUInteger index = ((ReceivingViewController*) viewController).pageIndex;
+//    
+//    if (index == NSNotFound) {
+//        return nil;
+//    }
+//    
+//    index++;
+//    if (index == [self.pageTitles count]) {
+//        return nil;
+//    }
+//    return [self viewControllerAtIndex:index];
+//}
+
+
 @end
+
+
 
